@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container{
+    /* padding: 40px 10px; */
+    background-color: rgb(71, 166, 221);
+    width: 80%;
+    height: 90vh;
+}
+.section{
+    background-color: transparent;
+    padding: 40px 10px;
+}
+.default{
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 5px;
+    /* width: 250px; */
+    position: relative;
+    overflow: hidden;
+}
+
+.default p{
+    float: left;
+    width: 80%;
+    padding: 10px 5px;
+}
+.default span{
+    float: right;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 10px;
+    height: 10px;
+    /* background-color: yellow; */
+    /* overflow: hidden; */
+}
+.default span:before{
+    content: "";
+    height: 10px;
+    /* background-color: green; */
+    position: absolute;
+    top: -8px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+}
+.default span:after{
+    content: "";
+    height: 10px;
+    /* background-color: red; */
+    position: absolute;
+    top: 8px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.options{
+    position: absolute;
+    z-index: 5;
+    background-color: #fff;
+    width: 250px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 10px;
+    padding: 8px 0;
+}
+.options p{
+    padding: 8px 16px;
+    position: relative;
+}
+.options p:hover{
+    background-color: rgb(26, 101, 187);
+}
+.wrapper{
+    position: relative;
+    width: 250px;
+}
+.tick{
+    width: 10px;
+    float: right;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.tick:before{
+    content: "";
+    height: 2px;
+    position: absolute;
+    /* transform: rotate(45deg); */
+    background-color: red;
+    width: 10px;
+}
+.tick:after{
+    content: "";
+    height: 2px;
+    position: absolute;
+    transform: rotate(90deg);
+    background-color: red;
+    width: 10px;
+}
