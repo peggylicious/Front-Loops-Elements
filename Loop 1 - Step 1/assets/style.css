@@ -79,7 +79,7 @@
     padding: 8px 0;
 }
 .options p{
-    padding: 8px 16px;
+    padding: 4px 40px;
     position: relative;
 }
 .options p:hover{
@@ -90,26 +90,31 @@
     width: 250px;
 }
 .tick{
-    width: 10px;
-    float: right;
+    width: 22px;
+    height: 22px;
+    background-color: black;
+    display: inline-block;
     position: absolute;
     left: 5px;
     top: 50%;
-    transform: translate(0, -50%);
+    transform: rotate(30deg) translate(0, -50%);
+
 }
 .tick:before{
     content: "";
-    height: 2px;
     position: absolute;
-    /* transform: rotate(45deg); */
-    background-color: red;
-    width: 10px;
+    width: 3px;
+    height: 11px;
+    left: 11px;
+    top: 4px;
+    background-color: yellow;
 }
 .tick:after{
     content: "";
-    height: 2px;
+    width: 6px;
+    height: 3px;
     position: absolute;
-    transform: rotate(90deg);
     background-color: red;
-    width: 10px;
+    left: 6px;
+    top: 12px;
 }
