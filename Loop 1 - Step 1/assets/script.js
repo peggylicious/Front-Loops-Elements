@@ -20,6 +20,7 @@ var inputVal, defaultValue, optBlock, checkmark;
 window.onload = function(){
     for (let x = 0; x < inputVal.length; x++){
         checkmark[x].style.visibility = 'hidden';
+        optBlock.style.display = 'none';
     }
 }
 
