@@ -30,7 +30,9 @@ window.onload = function(){
 // optBlock.style.display = 'none';
 // checkmark[i].style.visibility = 'visible';
 
-
+document.addEventListener('onclick', function(){
+    
+})
 
 
 
