@@ -1,5 +1,4 @@
 /**
-* How to describe your code
 * @description Changes input to selected element
 * @constructor
 * @param {string} defaultValue - The value that displays everytime browser refreshes
@@ -9,32 +8,39 @@
 * @returns {string} Selected option
 */
 
-var inputVal, defaultValue, optBlock, checkmark;
-    inputVal = document.querySelectorAll('.options p');
-    defaultValue = document.querySelector('.default p');
-    optBlock = document.getElementsByClassName('options')[0];
+var inputVal = document.querySelectorAll('.options p'),
+    defaultValue = document.querySelector('.default p'),
+    optBlock = document.getElementsByClassName('options')[0],
     checkmark = document.getElementsByClassName('tick');
 
 // Displays default value when browser refreshes
 //  Hides all checkmarks when browser loads
-window.onload = function(){
+window.addEventListener('load', function(){
     for (let x = 0; x < inputVal.length; x++){
         checkmark[x].style.visibility = 'hidden';
         optBlock.style.display = 'none';
     }
-}
+});
 
 // Assigns click eventlistener to list of options
 // Hides Option block when value is selected
-// defaultValue.innerHTML = this.innerHTML;
-// optBlock.style.display = 'none';
-// checkmark[i].style.visibility = 'visible';
-
-document.addEventListener('onclick', function(){
-    
+document.addEventListener('click', function(event){
+    for (let i = 0; i < inputVal.length; i++){
+        if (event.target.matches('.opt-list p')){
+            defaultValue.innerHTML = event.target.innerHTML;
+            checkmark[i].style.visibility = 'visible';
+            optBlock.style.display = 'none';
+            if(inputVal[i] == event.target){
+                continue;
+            }
+            checkmark[i].style.visibility = 'hidden';
+        }
+    }
+    if (event.target.matches('.container')){
+        optBlock.style.display = 'none';
+        console.log('You jus clicked the window');
+    }
 })
-
-
 
 // Displays option block when user clicks input
 defaultValue.addEventListener('click', function(e){
