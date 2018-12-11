@@ -18,10 +18,12 @@ var inputVal = document.querySelectorAll('.options p'),
 window.addEventListener('load', function(){
 
         for (let x = 0; x < inputVal.length; x++){
-            if (actualWidth < 700){
-            }else{
-            }
+            // if (actualWidth < 700){
+
+            // }else{
+            // }
         }
+        // optBlock.style.display = 'none';
 });
 
 // Assigns click eventlistener to list of options
@@ -30,17 +32,20 @@ document.addEventListener('click', function(event){
     let actualWidth = window.innerWidth;
     for (let i = 0; i < inputVal.length; i++){
         // if(actualWidth < 700){
-            if (event.target.matches('.opt-list p')){
-                defaultValue.innerHTML = event.target.innerHTML;
-                checkmark[i].style.visibility = 'visible';
-                if(actualWidth > 700){
-                    if(inputVal[i] == event.target){
-                        continue;
+            if (window.matchMedia("(max-width: 659px)").matches){
+                if(event.target.matches('.opt-list p')){
+                    defaultValue.innerHTML = event.target.innerHTML;
+                    checkmark[i].style.visibility = 'visible';
+                    if(actualWidth < 600){
+                        if(inputVal[i] == event.target){
+                            continue;
+                        }
+                        checkmark[i].style.visibility = 'hidden';
                     }
-                    checkmark[i].style.visibility = 'hidden';
+                    optBlock.style.display = 'none';
                 }
+            }else{
                 optBlock.style.display = 'block';
-
             }
         // }else{
         //     optBlock.style.display = 'block';
