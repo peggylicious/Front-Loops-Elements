@@ -16,25 +16,35 @@ var inputVal = document.querySelectorAll('.options p'),
 // Displays default value when browser refreshes
 //  Hides all checkmarks when browser loads
 window.addEventListener('load', function(){
-    for (let x = 0; x < inputVal.length; x++){
-        checkmark[x].style.visibility = 'hidden';
-        optBlock.style.display = 'none';
-    }
+
+        for (let x = 0; x < inputVal.length; x++){
+            if (actualWidth < 700){
+            }else{
+            }
+        }
 });
 
 // Assigns click eventlistener to list of options
 // Hides Option block when value is selected
 document.addEventListener('click', function(event){
+    let actualWidth = window.innerWidth;
     for (let i = 0; i < inputVal.length; i++){
-        if (event.target.matches('.opt-list p')){
-            defaultValue.innerHTML = event.target.innerHTML;
-            checkmark[i].style.visibility = 'visible';
-            optBlock.style.display = 'none';
-            if(inputVal[i] == event.target){
-                continue;
+        // if(actualWidth < 700){
+            if (event.target.matches('.opt-list p')){
+                defaultValue.innerHTML = event.target.innerHTML;
+                checkmark[i].style.visibility = 'visible';
+                if(actualWidth > 700){
+                    if(inputVal[i] == event.target){
+                        continue;
+                    }
+                    checkmark[i].style.visibility = 'hidden';
+                }
+                optBlock.style.display = 'block';
+
             }
-            checkmark[i].style.visibility = 'hidden';
-        }
+        // }else{
+        //     optBlock.style.display = 'block';
+        // }
     }
     if (event.target.matches('.container')){
         optBlock.style.display = 'none';
