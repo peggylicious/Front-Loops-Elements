@@ -5,36 +5,25 @@
 * @param {string} inputVal - The selected value from list of options
 * @param {string} optBlock - The container for list of options
 * @param {string} checkmark - Checks a selected value
+* @param {string} lastClicked - Stores the target element that was last clicked
 * @returns {string} Selected option
 */
 
 var inputVal = document.querySelectorAll('.options p'),
     defaultValue = document.querySelector('.default p'),
     optBlock = document.getElementsByClassName('options')[0],
-    checkmark = document.getElementsByClassName('tick');
-
-// Displays default value when browser refreshes
-//  Hides all checkmarks when browser loads
-window.addEventListener('load', function(){
-
-        for (let x = 0; x < inputVal.length; x++){
-            // if (actualWidth < 700){
-
-            // }else{
-            // }
-        }
-        // optBlock.style.display = 'none';
-});
+    checkmark = document.getElementsByClassName('tick'),
+    lastClicked;
 
 // Assigns click eventlistener to list of options
 // Hides Option block when value is selected
 document.addEventListener('click', function(event){
     let actualWidth = window.innerWidth;
     for (let i = 0; i < inputVal.length; i++){
-        // if(actualWidth < 700){
-            if (window.matchMedia("(max-width: 659px)").matches){
+            if (window.matchMedia("(max-width: 600px)").matches){
                 if(event.target.matches('.opt-list p')){
                     defaultValue.innerHTML = event.target.innerHTML;
+                    lastClicked = event.target;
                     checkmark[i].style.visibility = 'visible';
                     if(actualWidth < 600){
                         if(inputVal[i] == event.target){
@@ -43,21 +32,50 @@ document.addEventListener('click', function(event){
                         checkmark[i].style.visibility = 'hidden';
                     }
                     optBlock.style.display = 'none';
+                    console.log(event.target.previousElementSibling);
+                }
+            }else if(window.matchMedia("(min-width: 605px)").matches){
+                if(event.target.matches('.opt-list p')){
+                    lastClicked = event.target;
+                    lastClicked.style.backgroundColor = 'red';
+                    if(actualWidth > 600){
+                        if(inputVal[i] == event.target){
+                            continue;
+                        }
+                        inputVal[i].style.backgroundColor = 'white';
+                    }
                 }
             }else{
-                optBlock.style.display = 'block';
+                console.log('yo');
             }
-        // }else{
-        //     optBlock.style.display = 'block';
-        // }
     }
     if (event.target.matches('.container')){
         optBlock.style.display = 'none';
-        console.log('You jus clicked the window');
+        console.log('You jus clicked the window!');
     }
 })
 
 // Displays option block when user clicks input
 defaultValue.addEventListener('click', function(e){
     optBlock.style.display = 'block';
+})
+
+// Checks if the browser window was maximized or minimized
+// if browser window was maximized, change color of selected option
+// If it is minimized, remove color and instead, add a checkmark
+window.addEventListener("resize", function(e){
+    for (let u = 0; u < inputVal.length; u++){
+        if (window.innerWidth > 600){
+            optBlock.style.display = 'block';
+            lastClicked.style.backgroundColor = 'red';
+            defaultValue.innerHTML = event.target.innerHTML;
+            lastClicked.previousElementSibling.style.visibility = 'hidden';
+        }
+        else{
+            optBlock.style.display = 'none';
+            lastClicked.style.backgroundColor = 'white';
+            defaultValue.innerHTML = lastClicked.innerHTML;
+            lastClicked.previousElementSibling.style.visibility = 'visible';
+        }
+    }
 })
