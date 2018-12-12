@@ -50,8 +50,10 @@ document.addEventListener('click', function(event){
             }
     }
     if (event.target.matches('.container')){
-        optBlock.style.display = 'none';
-        console.log('You jus clicked the window!');
+        if (window.matchMedia("(max-width: 600px)").matches){
+            optBlock.style.display = 'none';
+            console.log('You jus clicked the window!');
+        }
     }
 })
 
@@ -60,8 +62,8 @@ defaultValue.addEventListener('click', function(e){
     optBlock.style.display = 'block';
 })
 
-// Checks if the browser window was maximized or minimized
-// if browser window was maximized, change color of selected option
+// Checks if the browser window is maximized or minimized
+// if browser window is maximized, change color of selected option
 // If it is minimized, remove color and instead, add a checkmark
 window.addEventListener("resize", function(e){
     for (let u = 0; u < inputVal.length; u++){
