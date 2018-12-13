@@ -37,7 +37,7 @@ document.addEventListener('click', function(event){
             }else if(window.matchMedia("(min-width: 605px)").matches){
                 if(event.target.matches('.opt-list p')){
                     lastClicked = event.target;
-                    lastClicked.style.backgroundColor = 'red';
+                    lastClicked.style.backgroundColor = 'dodgerblue';
                     if(actualWidth > 600){
                         if(inputVal[i] == event.target){
                             continue;
@@ -69,7 +69,7 @@ window.addEventListener("resize", function(e){
     for (let u = 0; u < inputVal.length; u++){
         if (window.innerWidth > 600){
             optBlock.style.display = 'block';
-            lastClicked.style.backgroundColor = 'red';
+            lastClicked.style.backgroundColor = 'dodgerblue';
             defaultValue.innerHTML = event.target.innerHTML;
             lastClicked.previousElementSibling.style.visibility = 'hidden';
         }
