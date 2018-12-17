@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: dodgerblue;
+}
+.container{
+    width: 500px;
+    /* height: 100vh; */
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.tab_pane{
+    overflow: hidden;
+}
+.tab{
+    float: left;
+    padding: 10px;
+}
+.tab:nth-child(1){
+    font-weight: bold;
+}
+.display{
+    font-weight: bold;
+}
