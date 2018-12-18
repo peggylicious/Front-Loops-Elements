@@ -1,37 +1,43 @@
-var eachTab = document.querySelectorAll('.tab'),
-    chosen = document.getElementsByClassName('display')[0],
-    button = document.querySelector('input[type=button]');
-    inputVal = document.querySelector('input[type=number]');
+var eachTab = document.querySelectorAll('.tab p'),
+    chosen = document.querySelectorAll('.display p')[0],
+    button = document.querySelector('input[type=button]'),
+    inputVal = document.querySelector('input[type=number]'),
+    oldV;
 
+// Saves chosen/changed input value even after the form has been reset
+document.addEventListener('focusout', function(){
+    oldV = Number(inputVal.value);
+})
+
+// For clicking on tabs in the tabs pane and reflecting its values in the display area
 document.addEventListener('click', function(event){
     for(let i = 0; i < eachTab.length; i++){
-        if(event.target.matches(".tab")){
+        if(event.target.matches(".tab p")){
             chosen.innerHTML = event.target.innerHTML + " Content";
             if(eachTab[i] ==  event.target){
-                eachTab[i].style.fontWeight = "bold";
+                eachTab[i].style.color = "black";
                 continue;
             }
             chosen.innerHTML = event.target.innerHTML + " Content";
-            eachTab[i].style.fontWeight = "100";
-            console.log(eachTab[i]);
+            eachTab[i].style.color = "grey";
         }
     }
-
+// For Input
     for(let x = 0; x < eachTab.length; x++){
         if(event.target.matches("input[type=button]")){
-            if(Number(inputVal.value) >= 1 && Number(inputVal.value) <= 3){
-
-                if(Number(inputVal.value) === x+1){
-                    console.log(typeof(inputVal.value));
-                    eachTab[x].style.fontWeight = "bold";
+            if(oldV >= 1 && oldV <= 3){
+                // The below condition can be set as (oldV === x+1) or (oldV-1 === x)
+                if(oldV === x+1){
+                    eachTab[x].style.color = "black";
                     chosen.innerHTML = eachTab[x].innerHTML + " Content";
+                    document.getElementById('myForm').reset();
                     // continue;
                 }else{
-                    eachTab[x].style.fontWeight = "200";
-                    console.log('Sorry');
+                    eachTab[x].style.color = "grey";
                 }
             }else{
                 alert('Index is invalid');
+                document.getElementById('myForm').reset();
                 break;
             }
         }
